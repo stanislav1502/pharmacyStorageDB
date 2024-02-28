@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="created maven javafx project" />
+    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="created maven javafx project">
+      <change afterPath="$PROJECT_DIR$/.idea/ojdbc7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/ojdbc7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/DBUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/addDialogs/productDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/main-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,11 +31,15 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -27,6 +47,9 @@
         <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -37,25 +60,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Runner.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Runner.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.ojdbc7.jar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Stanislav/Desktop/Stanislav/Magistratura/JavaProjects/pharmacyStorage/.idea&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\.idea" />
+      <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\libraries" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.magistraturasgi.pharmacystorage.dbcontrollers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Runner">
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.magistraturasgi.pharmacystorage.Runner" />
       <module name="pharmacyStorage" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.magistraturasgi.pharmacystorage.*" />
+          <option name="PATTERN" value="org.magistraturasgi.pharmacystorage.dbControllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -63,9 +101,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ojdbc7.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/libraries/ojdbc7.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Runner" />
+        <item itemvalue="JAR Application.ojdbc7.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -86,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708873806899</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="created maven javafx project">
+      <option name="closed" value="true" />
+      <created>1708874123037</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708874123037</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
