@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.magistraturasgi.pharmacystorage.dbControllers.SupplierController">
+    <children>
+        <Label layoutX="14.0" layoutY="14.0" text="Supplier Details" />
+        <Label layoutX="14.0" layoutY="49.0" text="Supplier Name:" />
+        <TextField fx:id="supplierNameField" layoutX="120.0" layoutY="45.0" />
+        <Button layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#insertSupplier" text="Insert Supplier" />
+    </children>
+</AnchorPane>

@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="created maven javafx project">
-      <change afterPath="$PROJECT_DIR$/.idea/ojdbc7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/ojdbc7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/DBUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/addDialogs/productDialog.fxml" afterDir="false" />
+    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="added controllers for objects">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/clientDialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/inboundDialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/outboundDialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/shipperDialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/supplierDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/DBUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/addDialogs/productDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/productDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +83,8 @@
       <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\src\main\resources\org\magistraturasgi\pharmacystorage\dbControllers" />
+      <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\src\main\resources\org\magistraturasgi\pharmacystorage" />
       <recent name="C:\Users\Stanislav\Desktop\Stanislav\Magistratura\JavaProjects\pharmacyStorage\libraries" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -137,11 +141,31 @@
       <option name="project" value="LOCAL" />
       <updated>1708874123037</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added controllers for objects">
+      <option name="closed" value="true" />
+      <created>1709130391897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709130391897</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created maven javafx project" />
-    <option name="LAST_COMMIT_MESSAGE" value="created maven javafx project" />
+    <MESSAGE value="added controllers for objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="added controllers for objects" />
   </component>
 </project>

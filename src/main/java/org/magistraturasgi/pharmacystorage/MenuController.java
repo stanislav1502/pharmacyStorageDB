@@ -124,26 +124,33 @@ private Button addBtn;
         }
     }
 
+    private final ProductController pc = new ProductController();
+    private final ClientController cc = new ClientController();
+    private final SupplierController suc = new SupplierController();
+    private final ShipperController shc = new ShipperController();
+    private final InboundController ic = new InboundController();
+    private final OutboundController oc = new OutboundController();
+
     @FXML
     protected void onAddBtnClick() {
         switch (activeTable) {
-            case "products": ProductController.showAddProductDialog(); break;
-            case "clients": ClientController.showAddClientDialog(); break;
-            case "suppliers": SupplierController.showAddSupplierDialog(); break;
-            case "shippers": ShipperController.showAddShipperDialog(); break;
-            case "inbound": InboundController.showAddInboundDialog(); break;
-            case "outbound": OutboundController.showAddOutboundDialog(); break;
+            case "products": pc.showAddProductDialog(); break;
+            case "clients": cc.showAddClientDialog(); break;
+            case "suppliers": suc.showAddSupplierDialog(); break;
+            case "shippers": shc.showAddShipperDialog(); break;
+            case "inbound": ic.showAddInboundDialog(); break;
+            case "outbound": oc.showAddOutboundDialog(); break;
         }
     }
 
     public void onDelBtnClick(ActionEvent actionEvent) {
         switch (activeTable) {
-            case "products": ProductController.showDelProductDialog(); break;
-            case "clients": ClientController.showDelClientDialog(); break;
-            case "suppliers": SupplierController.showDelSupplierDialog(); break;
-            case "shippers": ShipperController.showDelShipperDialog(); break;
-            case "inbound": InboundController.showDelInboundDialog(); break;
-            case "outbound": OutboundController.showDelOutboundDialog(); break;
+            case "products": pc.showDelProductDialog(); break;
+            case "clients": cc.showDelClientDialog(); break;
+            case "suppliers": suc.showDelSupplierDialog(); break;
+            case "shippers": shc.showDelShipperDialog(); break;
+            case "inbound": ic.showDelInboundDialog(); break;
+            case "outbound": oc.showDelOutboundDialog(); break;
         }
     }
 

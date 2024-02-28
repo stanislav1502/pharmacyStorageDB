@@ -1,60 +1,70 @@
 package org.magistraturasgi.pharmacystorage.dbControllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.sql.*;
-import java.util.Optional;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import static org.magistraturasgi.pharmacystorage.dbControllers.DBUtil.getConnection;
 
 public class ProductController {
 
-    private PreparedStatement insertProductsPrepared = null;
-    private static final String INSERT_PRODUCT_QUERY = "INSERT INTO products VALUES(?, ?, ?, ?, ?)";
-
     @FXML
     private TextField productNameField;
+
     @FXML
     private TextField quantityField;
+
     @FXML
     private TextField priceField;
+
     @FXML
     private TextField accessField;
     @FXML
-    private Button insertProductButton;
+    private Stage productStage;
 
-    private Stage dialogStage;
-    public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
+
+    public void setProductStage(Stage productStage) {
+        this.productStage = productStage;
     }
 
-    @FXML
-    public static void showAddProductDialog() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add Product");
-        dialog.setHeaderText("Enter the name of the new product:");
-        dialog.setContentText("Product Name:");
+    public void showAddProductDialog() {
+        try {
 
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(productName -> {
-            // Use the entered product name to perform database interaction
-            // You can replace the following line with your actual logic
-            System.out.println("Adding product: " + productName);
+            URL url = getClass().getResource("productDialog.fxml");
+            System.out.println(url);
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
 
-            // Display a confirmation dialog
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Product Added");
-            alert.setHeaderText(null);
-            alert.setContentText("Product '" + productName + "' added successfully.");
+            // Create a new stage for the ProductDetails window
+            Stage productStage = new Stage();
+            productStage.initModality(Modality.APPLICATION_MODAL);
+            productStage.setTitle("Product Details");
+            productStage.setScene(new Scene(root));
 
-            alert.showAndWait();
-        });
+            // Set the ProductController for the loaded FXML
+            ProductController productController = loader.getController();
+            productController.setProductStage(productStage);
+
+            // Show the ProductDetails window
+            productStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+
+        }
     }
 
-    public static void showDelProductDialog() {
+
+    public void showDelProductDialog() {
+
     }
 
     @FXML
@@ -62,62 +72,50 @@ public class ProductController {
         String productName = productNameField.getText();
         String quantityStr = quantityField.getText();
         String priceStr = priceField.getText();
-        String accessStr = priceField.getText();
+        String accessLevelStr = accessField.getText();
 
         try {
-            // Convert quantity and price to appropriate types
+            // Convert quantity, price, and access level to appropriate types
             int quantity = Integer.parseInt(quantityStr);
             double price = Double.parseDouble(priceStr);
-            int acc = Integer.parseInt(accessStr);
+            int accessLevel = Integer.parseInt(accessLevelStr);
+
             // Insert the product into the database
-            insertProductIntoDatabase(productName, quantity, price, acc);
+            insertProductIntoDatabase(productName, quantity, price, accessLevel);
 
-            // Display a success message
-            showAlert(Alert.AlertType.INFORMATION, "Success","Product inserted successfully.");
-
-            // Close the dialog
-            dialogStage.close();
+            // Display a success message (you can add this part)
         } catch (NumberFormatException e) {
             // Handle parsing errors
-            showAlert(Alert.AlertType.ERROR, "Error","Invalid quantity or price. Please enter valid numeric values.");
-        }
-    }
-
-    private void insertProductIntoDatabase(String productName, int quantity, double price,int access) {
-        Connection connection = DBUtil.getInstance().getConnection();
-        try {
-            PreparedStatement stmt = insertProductsStatement();
-            // Set the values for the placeholders
-            stmt.setNull(1, Types.NUMERIC);
-            stmt.setString(2, productName);
-            stmt.setInt(3, quantity);
-            stmt.setDouble(4, price);
-            stmt.setInt(5, access);
-
-            stmt.executeUpdate();
+            e.printStackTrace(); // You might want to show an error message to the user
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            // Handle database errors
+            e.printStackTrace(); // You might want to show an error message to the user
         }
     }
-    private PreparedStatement insertProductsStatement(){
-        if (insertProductsPrepared == null){
+
+    private PreparedStatement addProductPrepared = null;
+    private static final String INSERT_PRODUCTS_QUERY = "INSERT INTO products (product_name, product_quantity, product_price, product_accesslevel) VALUES (?, ?, ?, ?)";
+    private void insertProductIntoDatabase(String productName, int quantity, double price, int accessLevel) throws SQLException {
+        try (PreparedStatement preparedStatement = getProductsStatement()) {
+            preparedStatement.setString(1, productName);
+            preparedStatement.setInt(2, quantity);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setInt(4, accessLevel);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+    private PreparedStatement getProductsStatement(){
+        if (addProductPrepared == null){
             try {
-                insertProductsPrepared = DBUtil.getConnection().prepareStatement(INSERT_PRODUCT_QUERY);
+                addProductPrepared = getConnection().prepareStatement(INSERT_PRODUCTS_QUERY);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return insertProductsPrepared;
+        return addProductPrepared;
     }
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-
 
 }
+
+
