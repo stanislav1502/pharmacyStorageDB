@@ -1,4 +1,5 @@
 # pharmacyStorageDB
+Script file for creating the DB according to the class diagram - pharmacy_init_DB.sql 
 
 Class diagram of the SQL DB Objects
 ![ZLJFYrGn3Bxth-XPUInu73pig2CAwc5GhqEtpTjNw8zkcwuCwl-kl2bvVIMWn-JxqYHVcjmNL1chTm82MhpAbAEf6YyeVmefNv9jpK5--VRvpUcySmVbuI_m_NX---5uVhN3dgfQtsG3KxOQM4Hf3QKuU0P7-6yXj5EbI0_6QXk0wYF77BElJlN5K5IfAJdm4AYltgLZG0Z8HaPS8](https://github.com/stanislav1502/pharmacyStorageDB/assets/80790229/6bfd2725-275c-4b7b-bdcb-09003cfa7269)
