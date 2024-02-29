@@ -1,4 +1,4 @@
-package org.magistraturasgi.pharmacystorage.dbControllers;
+package org.magistraturasgi.pharmacystorage;
 
 import java.sql.*;
 
@@ -54,7 +54,7 @@ public class DBUtil {
 					!cachedConnection.isValid(10)){
 				System.out.println("Attempting to get a new connection to DB!");
 				DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-		//		cachedConnection = DriverManager.getConnection("jdbc:oracle:thin:@172.16.251.135:1521:orcl", "c##ex23_stanislav_coursework", "stanislav236303");
+				cachedConnection = DriverManager.getConnection("jdbc:oracle:thin:@172.16.251.135:1521:orcl", "c##ex23_stanislav_coursework", "stanislav236303");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

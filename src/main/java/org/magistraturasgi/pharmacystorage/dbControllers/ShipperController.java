@@ -13,7 +13,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.magistraturasgi.pharmacystorage.dbControllers.DBUtil.getConnection;
+import static org.magistraturasgi.pharmacystorage.DBUtil.getConnection;
 
 public class ShipperController {
 
