@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -13,26 +16,27 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import static org.magistraturasgi.pharmacystorage.DBUtil.getConnection;
 
 public class OutboundController {
 
-    @FXML
-    private TextField outboundIdField;
 
     @FXML
     private TextField clientIdField;
-
     @FXML
     private TextField shipperIdField;
-
     @FXML
     private TextField productIdField;
-
+    @FXML
+    private TextField statusField;
+    @FXML
+    private TextField quantityField;
+    @FXML
+    private TextField priceField;
     @FXML
     private TextField requestedDateField;
-
     @FXML
     private TextField sentDateField;
 
@@ -41,8 +45,11 @@ public class OutboundController {
 
     private PreparedStatement addOutboundPrepared = null;
     private static final String INSERT_OUTBOUND_QUERY =
-            "INSERT INTO outbound_shipments (outbound_id, outbound_client, outbound_shipper, outbound_product, " +
-                    "outbound_requested_date, outbound_sent_date) VALUES (?, ?, ?, ?, ?, ?)";
+            "INSERT INTO outbound_shipments VALUES (outbound_shipment_t(?, ?, ?, outbound_seq.NEXTVAL, " +
+                    "(SELECT REF(c) FROM clients c WHERE c.client_id = ?), " +
+                    "(SELECT REF(s) FROM shippers s WHERE s.shipper_id = ?), " +
+                    "(SELECT REF(p) FROM products p WHERE p.product_id = ?), " +
+                    "?, ?)";
 
     public void setOutboundStage(Stage outboundStage) {
         this.outboundStage = outboundStage;
@@ -71,13 +78,42 @@ public class OutboundController {
         }
     }
 
-    public void showDelOutboundDialog(){
+    public void showDelOutboundDialog() {
+        // Create a TextInputDialog
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Delete by ID");
+        dialog.setHeaderText("Enter ");
+        dialog.setContentText("ID:");
 
+        // Show the dialog and wait for the user's response
+        Optional<String> result = dialog.showAndWait();
+        final String[] enteredId = new String[1];
+        // Process the user's input
+        result.ifPresent(id -> {
+            // Save the entered ID to the class variable
+            enteredId[0] = id;
+        });
+
+        // Handle the case where the user cancels the input
+        if (!result.isPresent()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No Outbound Shipment ID entered", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM outbound_shipments WHERE outbound_id = ?");
+            stmt.setString(1, enteredId[0]);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     private void insertOutbound() {
-        String outboundIdStr = outboundIdField.getText();
+        String statusStr = statusField.getText();
+        String quantityStr = quantityField.getText();
+        String priceStr = priceField.getText();
         String clientIdStr = clientIdField.getText();
         String shipperIdStr = shipperIdField.getText();
         String productIdStr = productIdField.getText();
@@ -86,7 +122,9 @@ public class OutboundController {
 
         try {
             // Convert IDs and dates to appropriate types
-            int outboundId = Integer.parseInt(outboundIdStr);
+
+            int quantity = Integer.parseInt(quantityStr);
+            double price = Double.parseDouble(priceStr);
             int clientId = Integer.parseInt(clientIdStr);
             int shipperId = Integer.parseInt(shipperIdStr);
             int productId = Integer.parseInt(productIdStr);
@@ -94,9 +132,10 @@ public class OutboundController {
             Date sentDate = Date.valueOf(sentDateStr);
 
             // Insert the outbound shipment into the database
-            insertOutboundIntoDatabase(outboundId, clientId, shipperId, productId, requestedDate, sentDate);
+            insertOutboundIntoDatabase(statusStr, quantity, price, clientId, shipperId, productId, requestedDate, sentDate);
 
             // Display a success message (you can add this part)
+            outboundStage.close();
         } catch (NumberFormatException e) {
             // Handle parsing errors
             e.printStackTrace(); // You might want to show an error message to the user
@@ -106,15 +145,17 @@ public class OutboundController {
         }
     }
 
-    private void insertOutboundIntoDatabase(int outboundId, int clientId, int shipperId, int productId,
+    private void insertOutboundIntoDatabase(String status, int quantity, double price, int clientId, int shipperId, int productId,
                                             Date requestedDate, Date sentDate) throws SQLException {
         try (PreparedStatement preparedStatement = getOutboundStatement()) {
-            preparedStatement.setInt(1, outboundId);
-            preparedStatement.setInt(2, clientId);
-            preparedStatement.setInt(3, shipperId);
-            preparedStatement.setInt(4, productId);
-            preparedStatement.setDate(5, requestedDate);
-            preparedStatement.setDate(6, sentDate);
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, quantity);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setInt(4, clientId);
+            preparedStatement.setInt(5, shipperId);
+            preparedStatement.setInt(6, productId);
+            preparedStatement.setDate(7, requestedDate);
+            preparedStatement.setDate(8, sentDate);
 
             preparedStatement.executeUpdate();
         }

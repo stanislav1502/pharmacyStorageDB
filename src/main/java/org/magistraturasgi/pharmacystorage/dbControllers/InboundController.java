@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -13,13 +16,12 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import static org.magistraturasgi.pharmacystorage.DBUtil.getConnection;
 
 public class InboundController {
 
-    @FXML
-    private TextField inboundIdField;
 
     @FXML
     private TextField supplierIdField;
@@ -31,11 +33,23 @@ public class InboundController {
     private TextField arriveDateField;
 
     @FXML
+    private TextField statusField;
+
+    @FXML
+    private TextField quantityField;
+
+    @FXML
+    private TextField priceField;
+
+    @FXML
     private Stage inboundStage;
 
     private PreparedStatement addInboundPrepared = null;
     private static final String INSERT_INBOUND_QUERY =
-            "INSERT INTO inbound_shipments (inbound_id, inbound_supplier, inbound_product, inbound_arrive_date) VALUES (?, ?, ?, ?)";
+            "INSERT INTO inbound_shipments VALUES (inbound_shipment_t(?, ?, ?, inbound_seq.NEXTVAL, " +
+                    "(SELECT REF(s) FROM suppliers s WHERE s.supplier_id = ?)," +
+                    "(SELECT REF(p) FROM products p WHERE p.product_id = ?), " +
+                    "?))";
 
     public void setInboundStage(Stage inboundStage) {
         this.inboundStage = inboundStage;
@@ -65,27 +79,61 @@ public class InboundController {
     }
 
     public void showDelInboundDialog() {
+        // Create a TextInputDialog
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Delete by ID");
+        dialog.setHeaderText("Enter Inbound ID:");
+        dialog.setContentText("ID:");
 
+        // Show the dialog and wait for the user's response
+        Optional<String> result = dialog.showAndWait();
+        final String[] enteredInboundId = new String[1];
+
+        // Process the user's input
+        result.ifPresent(inboundId -> {
+            // Save the entered Supplier ID to the class variable
+            enteredInboundId[0] = inboundId;
+        });
+
+        // Handle the case where the user cancels the input
+        if (!result.isPresent()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No Inbound Shipment ID entered", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+        try {
+            // Use the correct column name and adjust the SQL query
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM inbound_shipments WHERE inbound_id = ?");
+            stmt.setString(1, enteredInboundId[0]);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     @FXML
     private void insertInbound() {
-        String inboundIdStr = inboundIdField.getText();
         String supplierIdStr = supplierIdField.getText();
         String productIdStr = productIdField.getText();
         String arriveDateStr = arriveDateField.getText();
+        String statusStr = statusField.getText();
+        String quantityStr = quantityField.getText();
+        String priceStr = priceField.getText();
 
         try {
             // Convert IDs and arrival date to appropriate types
-            int inboundId = Integer.parseInt(inboundIdStr);
             int supplierId = Integer.parseInt(supplierIdStr);
             int productId = Integer.parseInt(productIdStr);
             Date arriveDate = Date.valueOf(arriveDateStr);
+            int quantity = Integer.parseInt(quantityStr);
+            double price = Double.parseDouble(priceStr);
 
             // Insert the inbound shipment into the database
-            insertInboundIntoDatabase(inboundId, supplierId, productId, arriveDate);
+            insertInboundIntoDatabase(statusStr,quantity,price,supplierId, productId, arriveDate);
 
             // Display a success message (you can add this part)
+            inboundStage.close();
         } catch (NumberFormatException e) {
             // Handle parsing errors
             e.printStackTrace(); // You might want to show an error message to the user
@@ -95,13 +143,14 @@ public class InboundController {
         }
     }
 
-    private void insertInboundIntoDatabase(int inboundId, int supplierId, int productId, Date arriveDate) throws SQLException {
+    private void insertInboundIntoDatabase(String status,int quantity, double price, int supplierId, int productId, Date arriveDate) throws SQLException {
         try (PreparedStatement preparedStatement = getInboundStatement()) {
-            preparedStatement.setInt(1, inboundId);
-            preparedStatement.setInt(2, supplierId);
-            preparedStatement.setInt(3, productId);
-            preparedStatement.setDate(4, arriveDate);
-
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, quantity);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setInt(4, supplierId);
+            preparedStatement.setInt(5, productId);
+            preparedStatement.setDate(6, arriveDate);
             preparedStatement.executeUpdate();
         }
     }

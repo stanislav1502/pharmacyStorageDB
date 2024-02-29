@@ -3,22 +3,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.magistraturasgi.pharmacystorage.dbControllers.OutboundController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.magistraturasgi.pharmacystorage.dbControllers.OutboundController">
     <children>
         <Label layoutX="14.0" layoutY="14.0" text="Outbound Shipment Details" />
-        <Label layoutX="14.0" layoutY="49.0" text="Outbound ID:" />
-        <TextField fx:id="outboundIdField" layoutX="120.0" layoutY="45.0" />
-        <Label layoutX="14.0" layoutY="89.0" text="Client ID:" />
-        <TextField fx:id="clientIdField" layoutX="120.0" layoutY="85.0" />
-        <Label layoutX="14.0" layoutY="129.0" text="Shipper ID:" />
-        <TextField fx:id="shipperIdField" layoutX="120.0" layoutY="125.0" />
-        <Label layoutX="14.0" layoutY="169.0" text="Product ID:" />
-        <TextField fx:id="productIdField" layoutX="120.0" layoutY="165.0" />
-        <Label layoutX="14.0" layoutY="209.0" text="Requested Date:" />
-        <TextField fx:id="requestedDateField" layoutX="120.0" layoutY="205.0" />
-        <Label layoutX="14.0" layoutY="249.0" text="Sent Date:" />
-        <TextField fx:id="sentDateField" layoutX="120.0" layoutY="245.0" />
-        <Button layoutX="120.0" layoutY="289.0" mnemonicParsing="false" onAction="#insertOutbound" text="Insert Outbound Shipment" />
+
+        <Label layoutX="14.0" layoutY="49.0" text="Client ID:" />
+        <TextField fx:id="clientIdField" layoutX="120.0" layoutY="45.0" />
+        <Label layoutX="14.0" layoutY="89.0" text="Shipper ID:" />
+        <TextField fx:id="shipperIdField" layoutX="120.0" layoutY="85.0" />
+        <Label layoutX="14.0" layoutY="129.0" text="Product ID:" />
+        <TextField fx:id="productIdField" layoutX="120.0" layoutY="125.0" />
+
+        <Label layoutX="14.0" layoutY="169.0" text="Status:" />
+        <TextField fx:id="statusField" layoutX="120.0" layoutY="165.0" />
+        <Label layoutX="14.0" layoutY="209.0" text="Quantity:" />
+        <TextField fx:id="quantityField" layoutX="120.0" layoutY="205.0" />
+        <Label layoutX="14.0" layoutY="249.0" text="Price:" />
+        <TextField fx:id="priceField" layoutX="120.0" layoutY="245.0" />
+
+        <Label layoutX="14.0" layoutY="289.0" text="Requested Date &#10;(D-M-Y H:M:S):" />
+        <TextField fx:id="requestedDateField" layoutX="120.0" layoutY="285.0" />
+        <Label layoutX="14.0" layoutY="329.0" text="Sent Date &#10;(D-M-Y H:M:S):" />
+        <TextField fx:id="sentDateField" layoutX="120.0" layoutY="325.0" />
+        
+        <Button layoutX="120.0" layoutY="369.0" mnemonicParsing="false" onAction="#insertOutbound" text="Insert Outbound Shipment" />
     </children>
 </AnchorPane>

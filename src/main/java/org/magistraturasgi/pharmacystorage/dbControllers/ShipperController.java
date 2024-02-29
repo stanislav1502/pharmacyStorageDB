@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -12,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import static org.magistraturasgi.pharmacystorage.DBUtil.getConnection;
 
@@ -33,8 +37,7 @@ public class ShipperController {
     private Stage shipperStage;
 
     private PreparedStatement addShipperPrepared = null;
-    private static final String INSERT_SHIPPER_QUERY =
-            "INSERT INTO shippers (shipper_name, speed_amount, speed_scale, shipper_price) VALUES (?, ?, ?, ?)";
+    private static final String INSERT_SHIPPER_QUERY = "INSERT INTO shippers VALUES (shipper_t(shipper_seq.NEXTVAL, ?, ?, ?, ?))";
 
     public void setShipperStage(Stage shipperStage) {
         this.shipperStage = shipperStage;
@@ -63,9 +66,39 @@ public class ShipperController {
         }
     }
 
-    public void showDelShipperDialog(){
+    public void showDelShipperDialog() {
+        // Create a TextInputDialog
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Delete by ID");
+        dialog.setHeaderText("Enter Shipper ID:");
+        dialog.setContentText("Shipper ID:");
 
+        // Show the dialog and wait for the user's response
+        Optional<String> result = dialog.showAndWait();
+        final String[] enteredShipperId = new String[1];
+
+        // Process the user's input
+        result.ifPresent(shipperId -> {
+            // Save the entered Supplier ID to the class variable
+            enteredShipperId[0] = shipperId;
+        });
+
+        // Handle the case where the user cancels the input
+        if (!result.isPresent()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No Shipper ID entered", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+        try {
+            // Use the correct column name and adjust the SQL query
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM shippers WHERE shipper_id = ?");
+            stmt.setString(1, enteredShipperId[0]);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     @FXML
     private void insertShipper() {
@@ -83,6 +116,7 @@ public class ShipperController {
             insertShipperIntoDatabase(shipperName, speedAmount, speedScale, price);
 
             // Display a success message (you can add this part)
+            shipperStage.close();
         } catch (NumberFormatException e) {
             // Handle parsing errors
             e.printStackTrace(); // You might want to show an error message to the user
