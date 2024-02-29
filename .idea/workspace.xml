@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="moved dbutil&#10;added db init sql">
+    <list default="true" id="6bb20476-14f7-4993-94f2-86da8c315d15" name="Changes" comment="fixed CRUD operations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/DBUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/InboundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/OutboundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/ShipperController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/magistraturasgi/pharmacystorage/dbControllers/SupplierController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/clientDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/clientDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/inboundDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/inboundDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/outboundDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/outboundDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/productDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/productDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/shipperDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/shipperDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/supplierDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/magistraturasgi/pharmacystorage/dbControllers/supplierDialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709202136889</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed CRUD operations">
+      <option name="closed" value="true" />
+      <created>1709228290449</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709228290449</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,7 +187,8 @@
     <MESSAGE value="added dialog ui" />
     <MESSAGE value="moved dbutil" />
     <MESSAGE value="moved dbutil&#10;added db init sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved dbutil&#10;added db init sql" />
+    <MESSAGE value="fixed CRUD operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed CRUD operations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

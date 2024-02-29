@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="313.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.magistraturasgi.pharmacystorage.dbControllers.ProductController">
+<AnchorPane prefHeight="330.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.magistraturasgi.pharmacystorage.dbControllers.ProductController">
 <children>
     <Label layoutX="14.0" layoutY="14.0" text="Product Details" />
     <Label layoutX="14.0" layoutY="49.0" text="Product Name:" />
@@ -18,6 +18,6 @@
     <ChoiceBox fx:id="productTypeField" layoutX="120.0" layoutY="205.0" prefWidth="150.0" />
     <Label layoutX="14.0" layoutY="249.0" text="Product Info:" />
     <TextField fx:id="infoField" layoutX="120.0" layoutY="245.0" />
-    <Button layoutX="120.0" layoutY="273.0" mnemonicParsing="false" onAction="#insertProduct" text="Insert Product" />
+    <Button layoutX="120.0" layoutY="289.0" mnemonicParsing="false" onAction="#insertProduct" text="Insert Product" />
 </children>
 </AnchorPane>
